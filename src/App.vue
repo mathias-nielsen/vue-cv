@@ -1,64 +1,58 @@
 <template>
   <v-app id="inspire">
-    <v-navigation-drawer
-      v-model="drawer"
-      app
-    >
+    <v-navigation-drawer v-model="drawer" app>
       <v-list dense>
-        <v-list-item link>
-          <v-list-item-action>
-            <v-icon>mdi-home</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>Hjem</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item link>
-          <v-list-item-action>
-            <v-icon>mdi-contact-mail</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>Kontakt</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
+
+        <router-link to="home" tag="div">
+          <NavBarItemList iconName="mdi-home" itemTitle="Hjem" />
+        </router-link>
+
+        <router-link to="contact" tag="div">
+          <NavBarItemList iconName="mdi-contact-mail" itemTitle="Kontakt" />
+        </router-link>
+
+        <router-link to="about-vue" tag="div">
+          <NavBarItemList iconName="mdi-vuejs" itemTitle="Vue" />
+        </router-link>
+
       </v-list>
     </v-navigation-drawer>
 
-    <v-app-bar
-      app
-      color="indigo"
-      dark
-    >
+    <!-- header -->
+    <v-app-bar app color="indigo" dark>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-toolbar-title>Online CV: Mathias Nielsen</v-toolbar-title>
     </v-app-bar>
+    <!-- header -->
 
+    <!-- content -->
     <v-content>
-      <v-container
-        class="fill-height"
-        fluid
-      >
+      <v-container class="fill-height" fluid>
+        <router-view></router-view>
       </v-container>
     </v-content>
-    <v-footer
-      color="indigo"
-      app
-    >
+    <!-- content -->
+
+    <!-- footer -->
+    <v-footer color="indigo" app>
       <span class="white--text">&copy; 2019</span>
     </v-footer>
+    <!-- footer -->
   </v-app>
 </template>
 
 <script>
-export default {
-  name: 'App',
+import NavBarItemList from "./components/nav-bar-list-item";
 
-  props: {
-    source: String,
+export default {
+  name: "App",
+
+  components: {
+    NavBarItemList
   },
 
   data: () => ({
-    drawer: null,
-  }),
+    drawer: null
+  })
 };
 </script>
