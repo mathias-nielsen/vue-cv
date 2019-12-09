@@ -28,7 +28,7 @@
     <!-- header -->
 
     <!-- content -->
-    <v-content>
+    <v-content overflow="auto">
         <router-view @newTitle="setTitle"></router-view>
     </v-content>
     <!-- content -->
@@ -64,3 +64,16 @@ export default {
   }
 };
 </script>
+
+<style lang="scss">
+@import url('https://fonts.googleapis.com/css?family=Gelasio&display=swap');
+
+.v-divider {
+  margin: 10px 10px 10px 10px;
+}
+
+h1, h2, h3, p {
+  font-family: 'Gelasio', sans-serif;
+}
+
+</style>
