@@ -72,8 +72,22 @@ export default {
   margin: 10px 10px 10px 10px;
 }
 
-h1, h2, h3, p {
+.company-logo {
+  width: 5;
+  height: 5;
+}
+
+h1, h2, h3, h4, p {
   font-family: 'Gelasio', sans-serif;
+}
+
+.vertical-center {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.object-center {
+  margin: auto;
 }
 
 </style>
