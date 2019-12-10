@@ -1,23 +1,25 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-
+import {dataService} from '../shared/services/data-service';
 Vue.use(Vuex)
 
 const state = {
-
+  proffesionalExperience: [],
 };
 
 const mutations = {
-
+  getProffesionalExpierence(state, list) {
+    state.proffesionalExperience = list;
+  },
 };
 
 const actions = {
-
+  getProffesionalExpierenceAction({commit}) {
+    const list = dataService.fetchProffesionalExpierence();
+    commit('getProffesionalExpierence', list);
+  },
 };
 
-const modules = {
-
-};
 
 
 export default new Vuex.Store({
@@ -25,5 +27,4 @@ export default new Vuex.Store({
   state,
   mutations,
   actions,
-  modules
 })

@@ -1,1 +1,2 @@
 export const PROFILE_URL = 'https://media.licdn.com/dms/image/C5603AQFdRFz7GtSZAA/profile-displayphoto-shrink_200_200/0?e=1580947200&v=beta&t=S9uvOGe04rG139GV8WYlF9opCMHaW2WGG7pMxCjrSuA';
+export const DISPLAY_DATE_FORMAT = 'DD/MM/YYYY';

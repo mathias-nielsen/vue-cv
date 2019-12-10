@@ -6,8 +6,13 @@
         <!-- logo and company. -->
         <v-col cols="4">
           <v-row no-gutters>
-            <v-img :src="companyLogo" contain max-width="30"/>
-            <h3 class="mx-2 vertical-center">{{ companyName }}</h3>
+            <div v-if="companyLogo">
+              <v-img :src="companyLogo" contain max-width="40" />
+            </div>
+            <div v-else>
+              <v-icon> mdi-alert-circle </v-icon>
+            </div>
+            <h3 class="mx-2 vertical-center">{{ proffExp.companyName }}</h3>
           </v-row>
         </v-col>
 
@@ -15,12 +20,12 @@
         <v-col class="object-center">
           <v-row no-gutters>
             <v-col cols="1"><h4>Periode:</h4></v-col>
-            <v-col> {{ startDate }} - {{ endDate }} </v-col>
+            <v-col> {{ proffExp.startDate }} - {{ proffExp.endDate }} </v-col>
           </v-row>
         </v-col>
       </v-row>
     </v-expansion-panel-header>
-    <v-expansion-panel-content>asd</v-expansion-panel-content>
+    <v-expansion-panel-content>{{ proffExp.description }}</v-expansion-panel-content>
   </v-expansion-panel>
 </template>
 
@@ -29,29 +34,24 @@ export default {
   name: "ExpansionListItem",
 
   props: {
-    companyName: {
-      type: String,
-      default: () => "itminds.png"
-    },
-    logoName: {
-      type: String,
-      default: () => ""
-    },
-    startDate: {
-      type: String,
-      default: () => ""
-    },
-    endDate: {
-      type: String,
-      default: () => ""
+    proffExp: {
+      type: Object,
+      required: true,
+      default: () => {}
     }
   },
 
   computed: {
-      companyLogo() {
-          return require(`../shared/pics/${this.logoName}`);
+    companyLogo() {
+      let logo = undefined;
+      try {
+        logo = require(`../shared/pics/${this.proffExp.logoName}`);
+      } catch (error) {
+        console.log("Could not find logo");
       }
-  },
+      return logo;
+    }
+  }
 };
 </script>
 

@@ -77,7 +77,8 @@ export default {
   height: 5;
 }
 
-h1, h2, h3, h4, p {
+
+* {
   font-family: 'Gelasio', sans-serif;
 }
 

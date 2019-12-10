@@ -37,10 +37,9 @@
       <v-row no-gutters>
         <v-expansion-panels>
           <ExpansionListItem
-            logoName="itminds.png"
-            companyName="IT-Minds"
-            startDate="01/05/2019"
-            endDate="Nu"
+            v-for="proffExp in proffesionalExperience"
+            :key="proffExp.id"
+            :proffExp="proffExp"
           />
         </v-expansion-panels>
       </v-row>
@@ -52,6 +51,7 @@
 import { titleMixins } from "../shared/standard-mixins";
 import { PROFILE_URL } from "../data/constants";
 import ExpansionListItem from "../components/expansion-list-item";
+import { mapState, mapActions } from "vuex";
 
 export default {
   name: "cv",
@@ -59,7 +59,7 @@ export default {
   mixins: [titleMixins],
 
   components: {
-    ExpansionListItem,
+    ExpansionListItem
   },
 
   data() {
@@ -67,6 +67,18 @@ export default {
       title: "CV",
       profilePicture: PROFILE_URL
     };
+  },
+
+  created() {
+    this.getProffesionalExpierenceAction();
+  },
+
+  computed: {
+    ...mapState(["proffesionalExperience"])
+  },
+
+  methods: {
+    ...mapActions(["getProffesionalExpierenceAction"])
   }
 };
 </script>
